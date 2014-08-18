@@ -1,8 +1,15 @@
 ﻿<Window x:Class="ServiceManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Service Manager" Height="350" Width="525" MinWidth="525" MinHeight="350">
     <Grid>
-        
+        <ListView Margin="10" Name="lvServicesListView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Service Name" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                    <GridViewColumn Header="Status" Width="Auto" DisplayMemberBinding="{Binding Status}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

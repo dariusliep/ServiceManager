@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServicesOperations;
 
 namespace ServiceManager
 {
@@ -23,6 +24,11 @@ namespace ServiceManager
         public MainWindow()
         {
             InitializeComponent();
+
+            ServicesReading reading = new ServicesReading();
+            List<Service> services = reading.ReadAllServices();
+
+            lvServicesListView.ItemsSource = services;
         }
     }
 }
