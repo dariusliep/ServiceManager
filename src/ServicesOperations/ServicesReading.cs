@@ -9,19 +9,12 @@ namespace ServicesOperations
 {
     public class ServicesReading
     {
-        public List<Service> ReadAllServices()
+        public ServiceController[] ReadAllServices()
         {
             // reading all services
             ServiceController[] services = ServiceController.GetServices();
 
-            List<Service> servicesList = new List<Service>();
-
-            foreach(ServiceController service in services)
-            {
-                Service tempService = new Service(service);
-                servicesList.Add(tempService);
-            }
-            return servicesList;
+            return services;
         }
 
         public static string GetServiceStatusString(ServiceControllerStatus status)

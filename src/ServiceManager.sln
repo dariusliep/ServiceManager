@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceManager", "ServiceManager\ServiceManager.csproj", "{D48D79B1-5927-402B-8B54-9169F45A4077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesOperations", "..\ServicesOperations\ServicesOperations.csproj", "{F3C368B4-9EC4-4256-9F97-79BC0CB59C02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesOperations", "ServicesOperations\ServicesOperations.csproj", "{F3C368B4-9EC4-4256-9F97-79BC0CB59C02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
