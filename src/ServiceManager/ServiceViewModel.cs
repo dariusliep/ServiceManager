@@ -11,11 +11,18 @@ namespace ServiceManager
     {
         Service _service;
 
+        public List<Service> Services { get; set; }
+
+        public ServiceViewModel()
+        {
+            Services = Service.GetFakeServicesList();
+        }
+
         public Service Service
         {
             get { return _service; }
-            set 
-            { 
+            set
+            {
                 _service = value;
                 RaisePropertyChanged("DisplayName");
                 RaisePropertyChanged("Status");

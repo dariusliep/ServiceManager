@@ -51,9 +51,9 @@ namespace ServiceManager
         {
             ServicesReading reading = new ServicesReading();
             Message message = new Message();
-            message.Services = reading.ReadAllServices();
-            _queue.Enqueue(message);
-            _signal.Set();
+            //message.Services = reading.ReadAllServices();
+            //_queue.Enqueue(message);
+            //_signal.Set();
         }
 
         void ConsumeServicesList()

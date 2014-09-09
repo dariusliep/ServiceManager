@@ -1,12 +1,13 @@
 ﻿<Window x:Class="ServiceManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:ServiceManager"
         Title="Service Manager" Height="350" Width="525" MinWidth="525" MinHeight="350">
     <Window.DataContext>
-        <ServiceViewModel/>
+        <viewModel:ServiceViewModel/>
     </Window.DataContext>
     <Grid>
-        <ListView Margin="10" Name="lvServicesListView">
+        <ListView ItemsSource="{Binding Services}" Margin="10" Name="lvServicesListView">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Service Name" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
