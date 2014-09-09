@@ -50,22 +50,16 @@ namespace ServiceManager
         /// <returns>fake list of services</returns>
         public static List<Service> GetFakeServicesList()
         {
-            List<Service> Services = new List<Service>
+            List<Service> services = new List<Service>();
+
+            for (int i = 0; i < 1000000; i++)
             {
-                new Service{ DisplayName="service1", Name="service1", Status="running"},
-                new Service{ DisplayName="service2", Name="service2", Status="running"},
-                new Service{ DisplayName="service3", Name="service3", Status="running"},
-                new Service{ DisplayName="service4", Name="service4", Status="running"},
-                new Service{ DisplayName="service5", Name="service5", Status="running"},
-                new Service{ DisplayName="service6", Name="service6", Status="running"},
-                new Service{ DisplayName="service7", Name="service7", Status="running"},
-                new Service{ DisplayName="service8", Name="service8", Status="running"},
-                new Service{ DisplayName="service9", Name="service9", Status="running"},
-                new Service{ DisplayName="service10", Name="service10", Status="running"},
-                new Service{ DisplayName="service11", Name="service11", Status="running"},
-                new Service{ DisplayName="service12", Name="service12", Status="running"},
-            };
-            return Services;
+                StringBuilder serviceName = new StringBuilder();
+                serviceName.AppendFormat("Service{0}", i);
+                Service service = new Service { DisplayName = serviceName.ToString(), Name = serviceName.ToString(), Status = "running" };
+                services.Add(service);
+            }
+            return services;
         }
     }
 }
