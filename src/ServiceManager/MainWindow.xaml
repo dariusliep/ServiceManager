@@ -12,6 +12,8 @@
                 <GridView>
                     <GridViewColumn Header="Service Name" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
                     <GridViewColumn Header="Status" Width="Auto" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Startup type" Width="Auto" DisplayMemberBinding="{Binding StartupType}"/>
+                    <GridViewColumn Header="Description" Width="140" DisplayMemberBinding="{Binding Description}"/>
                 </GridView>
             </ListView.View>
         </ListView>

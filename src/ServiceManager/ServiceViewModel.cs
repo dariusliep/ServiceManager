@@ -52,6 +52,12 @@ namespace ServiceManager
             set { _service.Status = value; }
         }
 
+        public string StartupType
+        {
+            get { return _service.StartupType; }
+            set { _service.StartupType = value; }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void RaisePropertyChanged(string propertyName)
@@ -67,14 +73,54 @@ namespace ServiceManager
         {
             ServicesReading reading = new ServicesReading();
             ServiceController[] services = reading.ReadAllServices();
-            List<Service> servicesList = new List<Service>();
+            Dictionary<string, Service> servicesList = new Dictionary<string, Service>();
             foreach (ServiceController service in services)
             {
-                servicesList.Add(new Service(service));
+                servicesList.Add(service.ServiceName, new Service(service));
             }
-            Services = servicesList;
+            List<string> servicesNames = new List<string>();
+            foreach(var service in servicesList)
+            {
+                servicesNames.Add(service.Key);
+            }
+
+            List<ServicesOperations.ServiceHelper.ServiceInfo> servicesInfo = ServiceHelper.GetServicesInfo(servicesNames);
+            List<Service> finalServicesList = new List<Service>();
+            foreach(var serviceInfo in servicesInfo)
+            {
+                if (servicesList.ContainsKey(serviceInfo.serviceName))
+                {
+                    Service service = servicesList[serviceInfo.serviceName];
+                    service.StartupType = GetStartupType(serviceInfo.startType);
+                    service.Description = serviceInfo.description;
+                    finalServicesList.Add(service);
+                    
+                }
+            }
+
+            Services = finalServicesList;
 
             RaisePropertyChanged("Services");
+        }
+
+        private string GetStartupType(int startupType)
+        {
+            switch(startupType)
+            {
+                case 2:
+                    return "automatic";
+                case 0:
+                    return "boot start";
+                case 3:
+                    return "manual";
+                case 4:
+                    return "disabled";
+                case 1:
+                    return "system start";
+                default:
+
+                    return "unknown";
+            }
         }
     }
 }

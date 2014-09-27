@@ -13,6 +13,21 @@ namespace ServiceManager
         private string _name;
         private string _status;
         private string _displayName;
+        private string _startupType;
+        private string _description;
+
+
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+
+        public string StartupType
+        {
+            get { return _startupType; }
+            set { _startupType = value; }
+        }
 
         public string DisplayName
         {
@@ -42,24 +57,6 @@ namespace ServiceManager
             Status = ServicesReading.GetServiceStatusString(sc.Status);
             Name = sc.ServiceName;
             DisplayName = sc.DisplayName;
-        }
-
-        /// <summary>
-        /// list of services for testing purposes
-        /// </summary>
-        /// <returns>fake list of services</returns>
-        public static List<Service> GetFakeServicesList()
-        {
-            List<Service> services = new List<Service>();
-
-            for (int i = 0; i < 1000000; i++)
-            {
-                StringBuilder serviceName = new StringBuilder();
-                serviceName.AppendFormat("Service{0}", i);
-                Service service = new Service { DisplayName = serviceName.ToString(), Name = serviceName.ToString(), Status = "running" };
-                services.Add(service);
-            }
-            return services;
         }
     }
 }
